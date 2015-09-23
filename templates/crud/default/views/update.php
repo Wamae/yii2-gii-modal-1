@@ -14,7 +14,6 @@ echo "<?php\n";
 ?>
 
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
@@ -26,8 +25,6 @@ $this->params['breadcrumbs'][] = ['label' => <?= $generator->generateString(Infl
 $this->params['breadcrumbs'][] = ['label' => $model-><?= $generator->getNameAttribute() ?>, 'url' => ['view', <?= $urlParams ?>]];
 $this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
 ?>
-
-<?= "<?php" ?> Pjax::begin(['id'=>'pjax-<?= $idModelName ?>-update']) ?>
 
 <div class="<?= $idModelName ?>-update">
 
@@ -42,5 +39,3 @@ $this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
     ]) ?>
 
 </div>
-
-<?= "<?php" ?> Pjax::end() ?>

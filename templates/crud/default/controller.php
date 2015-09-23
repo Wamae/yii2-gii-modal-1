@@ -57,6 +57,15 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         ];
     }
 
+    public function render($view, $params = [])
+    {
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax($view, $params);
+        } else {
+            return parent::render($view, $params);
+        }
+    }
+
     /**
      * Lists all <?= $modelClass ?> models.
      * @return mixed
@@ -89,14 +98,9 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
      */
     public function actionView(<?= $actionParams ?>)
     {
-        if(Yii::$app->request->isAjax)
-            return $this->renderAjax('view', [
-                'model' => $this->findModel(<?= $actionParams ?>),
-            ]);
-        else
-            return $this->render('view', [
-                'model' => $this->findModel(<?= $actionParams ?>),
-            ]);
+        return $this->render('view', [
+            'model' => $this->findModel(<?= $actionParams ?>),
+        ]);
     }
 
     /**
@@ -109,19 +113,15 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = new <?= $modelClass ?>();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->isAjax)
+            if (Yii::$app->request->isAjax) {
                 return $this->redirect(['index']);
-            else
+            } else {
                 return $this->redirect(['view', <?= $urlParams ?>]);
+            }
         } else {
-            if(Yii::$app->request->isAjax)
-                return $this->renderAjax('create', [
-                    'model' => $model,
-                ]);
-            else
-                return $this->render('create', [
-                    'model' => $model,
-                ]);
+            return $this->render('create', [
+                'model' => $model,
+            ]);
         }
     }
 
@@ -136,19 +136,15 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = $this->findModel(<?= $actionParams ?>);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(Yii::$app->request->isAjax)
+            if (Yii::$app->request->isAjax) {
                 return $this->redirect(['index']);
-            else
+            } else {
                 return $this->redirect(['view', <?= $urlParams ?>]);
+            }
         } else {
-            if(Yii::$app->request->isAjax)
-                return $this->renderAjax('update', [
-                    'model' => $model,
-                ]);
-            else
-                return $this->render('update', [
-                    'model' => $model,
-                ]);
+            return $this->render('update', [
+                'model' => $model,
+            ]);
         }
     }
 
