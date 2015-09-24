@@ -3,9 +3,8 @@ Modal CRUD Gii templates for Yii2 framework
 
 ## Description
 
-This generator generates a controller and views that implement CRUD (Create, Read, Update, Delete)
-operations for the specified data model.
-Uses Pjax && Bootstrap Modal. 
+This generator generates, controller and views that allow you to edit and view the data in the modal windows.
+Uses the Bootstrap Modals. 
 
 ## Installation
 
