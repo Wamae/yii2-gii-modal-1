@@ -40,9 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php endif; ?>
 
     <p>
-    <?= "<?= " ?>Html::button(<?= $dataHeader = $generator->generateString('Create ' . $wordsModelName) ?>, [
+    <?= "<?= " ?>Html::a(<?= $dataHeader = $generator->generateString('Create ' . $wordsModelName) ?>, ['create'], [
         'class' => 'btn btn-success show-modal',
-        'value' => Url::to(['create']),
         'data-target' => '#modal_view',
         'data-header' => <?= $dataHeader ?>,
     ]); ?>
