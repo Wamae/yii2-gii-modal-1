@@ -3,7 +3,7 @@ $(function(){
         var self = $(this),
         	target = $(self.attr('data-target')),
             ajax_url = self.attr('data-url') || self.attr('href'),
-            header = elm.attr('data-header')||'';
+            header = self.attr('data-header')||'';
 		var h4 = target.find('.modal-header').find('h4');
 		if (h4.length === 0) {
 		    $('<h4>'+header+'</h4>').appendTo(target.find('.modal-header'));
@@ -12,6 +12,7 @@ $(function(){
 		}
         if (ajax_url) {
         	target.modal('show').find('.modal-body').empty().load(ajax_url);
+        	return false;
         }
     });
 	$('body').on('beforeSubmit', 'form[data-ajax]', function () {

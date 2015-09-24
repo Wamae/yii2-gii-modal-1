@@ -21,7 +21,6 @@ echo "<?php\n";
 use yii\helpers\Html;
 use yii\helpers\Url;
 use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
-use yii\widgets\Pjax;
 use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
@@ -52,8 +51,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= "<?= " ?>Modal::widget([
         'id' => 'modal_view',
     ]); ?>
-
-    <?= "<?php" ?> Pjax::begin(['id'=>'pjax-<?= $idModelName ?>-index']);?>
 
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
@@ -90,25 +87,21 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
                         $options = array_merge([
                             'title' => Yii::t('yii', 'View'),
                             'aria-label' => Yii::t('yii', 'View'),
-                            'data-pjax' => '0',
                             'class'=>'show-modal',
-                            'value' => $url,
                             'data-target' => '#modal_view', 
                             'data-header' => Yii::t('yii', 'View') . ' ' . <?= $title ?>,
                         ]);
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', 'javascript:;', $options);
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
                     },
                     'update' => function ($url, $model, $key) {
                         $options = array_merge([
                             'title' => Yii::t('yii', 'Update'),
                             'aria-label' => Yii::t('yii', 'Update'),
-                            'data-pjax' => '0',
                             'class'=>'show-modal',
-                            'value' => $url, 
                             'data-target' => '#modal_view', 
                             'data-header' => Yii::t('yii', 'Update') . ' ' . <?= $title ?>,
                         ]);
-                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', 'javascript:;', $options);
+                        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
                     },
                 ],
             ],
@@ -124,6 +117,4 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
     ]) ?>
 <?php endif; ?>
 
-    <?= "<?php" ?> Pjax::end();?>
-    
 </div>
