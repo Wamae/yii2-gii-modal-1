@@ -28,7 +28,10 @@ $(function(){
             data: formData,
             success: function (response) {
                 form.closest('.modal-body').html(response);
-            }
+            },
+			error: function (jqXHR, textStatus, errorThrown) {
+				form.closest('.modal-body').html('<div class="error-summary">'+jqXHR.responseText+'</div>');
+			}
         });
         return false;
     });
