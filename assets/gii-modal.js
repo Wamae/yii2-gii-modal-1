@@ -24,7 +24,8 @@ $(function(){
         	return false;
         }
     });
-	$('body').on('beforeSubmit', 'form[data-ajax]', function () {
+    $(document).on('submit', 'form[data-ajax]', function(event) {
+    	event.preventDefault();
 		var formData = new FormData(this);
 		var form = $(this);
 		var body = form.closest('.modal-body').empty();
