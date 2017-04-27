@@ -5,7 +5,7 @@
  * @license https://github.com/borodulin/yii2-gii-modal/blob/master/LICENSE
  */
 
-namespace conquer\gii\templates\crud;
+namespace wamae\gii\templates\crud;
 
 /**
  * 

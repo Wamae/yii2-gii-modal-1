@@ -22,6 +22,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 use yii\bootstrap\Modal;
+use yii\widget\Pjax;
 
 /* @var $this yii\web\View */
 <?= !empty($generator->searchModelClass) ? "/* @var \$searchModel " . ltrim($generator->searchModelClass, '\\') . " */\n" : '' ?>
@@ -50,6 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= "<?= " ?>Modal::widget([
         'id' => 'modal_view',
     ]); ?>
+<?='<?php Pjax::begin(); ?>';?>
 
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
@@ -115,5 +117,6 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
         },
     ]) ?>
 <?php endif; ?>
+<?='<?php Pjax::end(); ?>'?>
 
 </div>
