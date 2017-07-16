@@ -39,6 +39,7 @@ use yii\data\ActiveDataProvider;
 use <?= ltrim($generator->baseControllerClass, '\\') ?>;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\widgets\ActiveForm;
 
 /**
  * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
@@ -122,6 +123,20 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
             return $this->render('create', [
                 'model' => $model,
             ]);
+        }
+    }
+    
+     /**
+     * Validates <?= $modelClass ?> model using ajax.
+     * Validates model and returns an error message array indexed by the attribute IDs.
+     * @return mixed
+     */
+    public function actionValidation()
+    {
+        $model = new <?= $modelClass ?>();
+        if(Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())){
+            Yii::$app->response->format = 'json';
+            return ActiveForm::validate($model);
         }
     }
 

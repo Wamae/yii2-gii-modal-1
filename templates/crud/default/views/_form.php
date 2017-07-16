@@ -8,6 +8,8 @@ use yii\helpers\StringHelper;
 
 /* @var $model \yii\db\ActiveRecord */
 $model = new $generator->modelClass();
+$baseModelName = StringHelper::basename($generator->modelClass);
+$controllerName = Inflector::camel2id($baseModelName);
 $safeAttributes = $model->safeAttributes();
 if (empty($safeAttributes)) {
     $safeAttributes = $model->attributes();
@@ -18,6 +20,7 @@ echo "<?php\n";
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
@@ -26,7 +29,7 @@ use yii\widgets\ActiveForm;
 
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
-    <?= "<?php" ?> $form = ActiveForm::begin(['enableClientValidation'=>false, 'options' => ['data-ajax' => true]]) ?>
+    <?= "<?php" ?> $form = ActiveForm::begin(['enableAjaxValidation'=>true,'validationUrl'=>Url::toRoute('<?=$controllerName."/validation"?>')]) ?>
 
 <?php foreach ($generator->getColumnNames() as $attribute) {
     if (in_array($attribute, $safeAttributes)) {

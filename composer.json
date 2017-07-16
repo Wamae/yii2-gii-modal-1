@@ -1,15 +1,15 @@
 {
-    "name": "conquer/gii-modal",
+    "name": "wamae/gii-modal",
     "description": "Yii2 gii modal",
     "keywords": ["yii2", "extension", "gii", "modal"],
-    "homepage": "https://github.com/borodulin/yii2-gii-modal",
+    "homepage": "https://bitbucket.org/wamae/yii2-gii-modal",
     "type": "yii2-extension",
     "license": "MIT",
     "authors": [
         {
-            "name": "Andrey Borodulin",
-            "email": "borodulin@gmail.com",
-            "homepage": "https://github.com/borodulin/yii2-gii-modal"
+            "name": "Benson Wamae",
+            "email": "wamaebenson06@gmail.com",
+            "homepage": "https://bitbucket.org/wamae/yii2-gii-modal"
         }
     ],
     "extra": {
@@ -23,7 +23,7 @@
     },
 	"autoload": {
 		"psr-4": {
-			"conquer\\gii\\": ""
+			"wamae\\gii\\": ""
 		}
 	}
 }

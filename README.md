@@ -13,12 +13,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 To install, either run
 
 ```
-$ php composer.phar require conquer/gii-modal "*"
+$ php composer.phar require mdw/gii-modal "*"
 ```
 or add
 
 ```
-"conquer/gii-modal": "*"
+"mdw/gii-modal": "*"
 ```
 
 to the ```require``` section of your `composer.json` file.
@@ -37,7 +37,7 @@ if (YII_ENV_DEV) {
         'allowedIPs' => ['127.0.0.1', '::1'],  
         'generators' => [
             'modal_crud' => [ // generator name
-                'class' => 'conquer\gii\templates\crud\Generator', // generator class
+                'class' => 'mdw\gii\templates\crud\Generator', // generator class
             ]
         ],
     ]; 
@@ -46,4 +46,4 @@ if (YII_ENV_DEV) {
 
 ## License
 
-**conquer/gii-modal** is released under the MIT License. See the bundled `LICENSE.md` for details.
+**mdw/gii-modal** is released under the MIT License. See the bundled `LICENSE.md` for details.

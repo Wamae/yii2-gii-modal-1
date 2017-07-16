@@ -5,7 +5,7 @@
  * @license https://github.com/borodulin/yii2-gii-modal/blob/master/LICENSE
  */
 
-namespace conquer\gii;
+namespace wamae\gii;
 
 use yii\web\AssetBundle;
 
@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 class GiiAsset extends AssetBundle
 {
-    public $sourcePath = '@conquer/gii/assets';
+    public $sourcePath = '@wamae/gii/assets';
     
     public $js = [
         'gii-modal.js',
